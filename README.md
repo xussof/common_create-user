@@ -12,7 +12,11 @@ All dependencies will appear on requirements.yml file
 Role Variables
 --------------
 
-#add_user: jenkins
+#user_name: jenkins
+#user_id_rsa: |
+#  sdsdsd
+#  sdsdsdds
+#user_id_rsapub:
 
 
 Dependencies
