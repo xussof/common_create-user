@@ -20,7 +20,7 @@ sudoers: |
 
   # User privilege specification
   root    ALL=(ALL:ALL) ALL
-  {{user_ansible}} ALL=(ALL) NOPASSWD: ALL
+  {{ item.value.user_name }} ALL=(ALL) NOPASSWD: ALL
   # Members of the admin group may gain root privileges
   %admin ALL=(ALL) ALL
 
