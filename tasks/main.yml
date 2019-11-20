@@ -6,7 +6,7 @@
   become: true
   user:
     name: "{{ item.value.user_name }}"
-    shell: {{ item.value.user_name }}
+    shell: "{{ item.value.user_shell }}"
     home: "/home/{{ item.value.user_name }}"
 #  with_dict: "{{ dict_common_create_user }}"
 
