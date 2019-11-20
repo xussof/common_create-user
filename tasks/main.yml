@@ -7,7 +7,7 @@
   user:
     name: "{{ item.value.user_name }}"
     shell: "{{ item.value.user_shell }}"
-    home: "/home/{{ item.value.user_name }}"
+    home: "{{ item.value.user_home }}"
   with_dict: "{{ dict_common_create_user }}"
 
 - name: Validate the sudoers file before saving
@@ -20,7 +20,8 @@
     line: '{{ item.value.user_name }} ALL=(ALL) NOPASSWD: ALL'
 #    validate: /usr/sbin/visudo -cf %s
   with_dict: "{{ dict_common_create_user }}"
-
+  when: item.value.is_sudo == True
+  
 - name: Validate the sudoers file before saving
   become: true
   lineinfile:
@@ -30,7 +31,7 @@
     insertafter: '^root    ALL=(ALL:ALL) ALL'
     line: '{{ item.value.user_name }} ALL=(ALL) NOPASSWD: ALL'
   with_dict: "{{ dict_common_create_user }}"
-
+  when: item.value.is_sudo == True
 #- name: Copiamos el sudoers
 #  copy:
 #    content: "{{ sudoers }}"
