@@ -6,8 +6,9 @@
   become: true
   user:
     name: "{{ item.value.user_name }}"
-    shell: /bin/bash
+    shell: {{ item.value.user_name }}
     home: "/home/{{ item.value.user_name }}"
+#  with_dict: "{{ dict_common_create_user }}"
 
 - name: Validate the sudoers file before saving
   become: true
@@ -18,6 +19,7 @@
     insertafter: '^root    ALL=(ALL:ALL) ALL'
     line: '{{ item.value.user_name }} ALL=(ALL) NOPASSWD: ALL'
 #    validate: /usr/sbin/visudo -cf %s
+#  with_dict: "{{ dict_common_create_user }}"
 
 - name: Validate the sudoers file before saving
   become: true
@@ -27,6 +29,7 @@
     regexp: '^root    ALL=(ALL:ALL) ALL'
     insertafter: '^root    ALL=(ALL:ALL) ALL'
     line: '{{ item.value.user_name }} ALL=(ALL) NOPASSWD: ALL'
+#  with_dict: "{{ dict_common_create_user }}"
 
 #- name: Copiamos el sudoers
 #  copy:
