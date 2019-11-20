@@ -12,11 +12,17 @@ All dependencies will appear on requirements.yml file
 Role Variables
 --------------
 
-#user_name: jenkins
-#user_id_rsa: |
-#  sdsdsd
-#  sdsdsdds
-#user_id_rsapub:
+#dict_common_create_user:
+#  jenkins:
+#    user_name: jenkins
+#    user_shell: /bin/bash
+#    user_home: /home/jenkins
+#    is_sudo: True
+#  xussof:
+#    user_name: xussof
+#    user_shell: /bin/bash
+#    user_home: /home/xussof
+#    is_sudo: True
 
 
 Dependencies
