@@ -3,3 +3,11 @@
 #  sdsdsd
 #  sdsdsdds
 #user_id_rsapub:
+#dict_common_create_user:
+#  jenkins:
+#    user_name: jenkins
+#    user_id_rsa: |
+#      dsdsdsds
+#      sdsdsdsdsd
+#    user_id_rsapub: sasaasasas
+#    user_shell: 
