@@ -1,0 +1,40 @@
+---
+#- include_vars: authorized_keys.yml
+- include_vars: sudoers.yml
+
+- name: Creamos usuario que ejecutara ansible que es "{{ item.value.user_name }}" aha
+  become: true
+  user:
+    name: "{{ item.value.user_name }}"
+    shell: "{{ item.value.user_shell }}"
+    home: "{{ item.value.user_home }}"
+
+- name: Validate the sudoers file before saving
+  become: true
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^root    ALL=(ALL:ALL) ALL'
+    insertafter: '^root    ALL=(ALL:ALL) ALL'
+    line: '{{ item.value.user_name }} ALL=(ALL) NOPASSWD: ALL'
+#    validate: /usr/sbin/visudo -cf %s
+  when: item.value.is_sudo == True
+
+- name: Validate the sudoers file before saving
+  become: true
+  lineinfile:
+    path: /etc/sudoers
+    state: present
+    regexp: '^root    ALL=(ALL:ALL) ALL'
+    insertafter: '^root    ALL=(ALL:ALL) ALL'
+    line: '{{ item.value.user_name }} ALL=(ALL) NOPASSWD: ALL'
+  when: item.value.is_sudo == True
+#- name: Copiamos el sudoers
+#  copy:
+#    content: "{{ sudoers }}"
+#    dest: /etc/sudoers
+#  become: true
+
+  # User privilege specification
+#  root    ALL=(ALL:ALL) ALL
+#  {{ user_name }} ALL=(ALL) NOPASSWD: ALL
