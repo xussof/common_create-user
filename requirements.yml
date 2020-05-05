@@ -1,5 +1,5 @@
 ---
-- src: https://github.com/xussof/software_sudo
+- src: git@github.com:xussof/software_sudo
   scm: git
   version: master
   name: xussof.software_sudo
