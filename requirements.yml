@@ -1,7 +1,7 @@
 ---
-- src: git@github.com:xussof/software_sudo
+- src: git@github.com:xussof/common_create-user
   scm: git
   version: master
-  name: xussof.software_sudo
+  name: common_create-user
 
 #Necesita pip install docker
